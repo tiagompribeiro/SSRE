@@ -6,11 +6,13 @@ import pandas as pd
 import numpy as np
 import tensorflow as tf
 
-total = pd.read_csv("../pcap_tensor/lable_feature_IOT.csv")
+total = pd.read_csv("/home/feup/Documents/IOT_catalog/prog/pcap_tensor/lable_feature_IOT.csv")
 
 #data = total.head(-1)
 #print(data)
 #print(len(total.index))
+
+path_dados = "../pcap_tensor/lable_feature_IOT.csv"
 
 ################################################################################
 # criar raw de data
@@ -21,7 +23,6 @@ LABEL_COLUMN_NAME = 'Label'
 def get_dataset(file_path, **kwargs):
   dataset = tf.data.experimental.make_csv_dataset(
       file_path,
-      batch_size=len(file_path.index), # nº de linhas
       column_names=NAME_COLUMN,
       label_name=LABEL_COLUMN_NAME,
       na_value="?",
@@ -31,9 +32,10 @@ def get_dataset(file_path, **kwargs):
       **kwargs)
   return dataset
 
-raw_total_data = get_dataset (total)
+raw_total_data = get_dataset(path_dados,batch_size=len(total.index))
 
 ################################################################################
 # Seprar da Data total em data de treino e teste
 ################################################################################
+
 
