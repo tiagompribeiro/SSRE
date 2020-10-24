@@ -43,18 +43,20 @@ import glob
 
 ip_filter = {} #dictionary
 
-ip_filter['Samsung_Camera'] = "'tcp && (eth.src==00:16:6c:ab:6b:88)'" #camara a ser avaliada
+ip_filter['y'] = "'tcp && (eth.src==00:16:6c:ab:6b:88)'" #camara a ser avaliada
+ip_filter['n'] = "'tcp && (eth.src==ec:1a:59:79:f4:89) || (eth.src==50:c7:bf:00:56:39)'"
 #ip_filter['TP-LINK_Camera'] = "'tcp && (eth.src==f4:f2:6d:93:51:f1)'"
 #ip_filter['Drop_Camera'] = "'tcp && (eth.src==30:8c:fb:2f:e4:b2)'"
-
+#ip_filter['y'] = "'tcp && (eth.src==70:ee:50:18:34:43) || (eth.src==f4:f2:6d:93:51:f1)  || (eth.src==30:8c:fb:2f:e4:b2)  || (eth.src==00:62:6e:51:27:2e)  || (eth.src==e8:ab:fa:19:de:4f)  || (eth.src==00:24:e4:11:18:a8)  || (eth.src==30:8c:fb:b6:ea:45)'"      #ok
+#ip_filter['n'] = "'tcp && (eth.src==74:2f:68:81:69:42) || (eth.src==ac:bc:32:d4:6f:2f)'"  #ok
 
 # eli
-os.system("./start.sh")
+#os.system("./start.sh")
 #######################################################################################
 
 # creat file lable_feature
 
-lable_feature = open("../pcap_tensor/camaras_2_sams.csv",'a')
+lable_feature = open("../pcap_tensor/devices_teste.csv",'a')
 
 lable_feature.writelines("Label,IPLength,IPHeaderLength,TTL,\
            Protocol,SourcePort,DestPort,SequenceNumber,AckNumber\
