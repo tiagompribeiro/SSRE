@@ -38,4 +38,10 @@ raw_total_data = get_dataset(path_dados,batch_size=len(total.index))
 # Seprar da Data total em data de treino e teste
 ################################################################################
 
+def show_batch(dataset):
+  for batch, label in dataset.take(1):
+    for key, value in batch.items():
+      print("{:20s}: {}".format(key,value.numpy()))
+
+show_batch(raw_train_data)
 
